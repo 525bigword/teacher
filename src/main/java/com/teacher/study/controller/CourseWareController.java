@@ -60,6 +60,37 @@ public class CourseWareController {
         }
     }
 
+    /**
+     * 管理账号使用
+     * @return
+     */
+    @PostMapping("/queryAll")
+    public Return findPowerAll(@RequestBody JSONObject json){
+        Integer index=json.getInteger("index");
+        Integer pageNum=json.getInteger("pageNum");
+        String name=json.getString("name");
+        try {
+            index=index-1;
+            if(index==null||index<0){
+                index=0;
+            }
+            if(pageNum==null||pageNum<0){
+                pageNum=6;
+            }
+            Map courseWareAll = courseWareService.findCourseWareAll(index, pageNum, name);
+            Map<String,Object> map=new ConcurrentHashMap<>();
+            Double totalPages=Double.valueOf((int)courseWareAll.get("count")%pageNum==0?
+                    ((int)courseWareAll.get("count")/pageNum):
+                    ((int)courseWareAll.get("count")/pageNum)+1);
+            map.put("data",courseWareAll.get("data"));
+            map.put("count",courseWareAll.get("count"));
+            map.put("totalPages",(int)Math.ceil(totalPages));
+            return new Return().yes(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Return().no();
+        }
+    }
 
     /**
      * 后台获取对应用户的课件
@@ -69,7 +100,7 @@ public class CourseWareController {
     @RequestParam(value = "index",required = false)Integer index,
     @RequestParam(value = "pageNum",required = false) Integer pageNum*/
     @PostMapping("/query")
-    public Return findPowerAll(@RequestBody JSONObject json){
+    public Return findPowerByUser(@RequestBody JSONObject json){
         Integer index=json.getInteger("index");
         Integer pageNum=json.getInteger("pageNum");
         String name=json.getString("name");

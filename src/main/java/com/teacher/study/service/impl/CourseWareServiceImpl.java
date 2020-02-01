@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 @Service
@@ -112,6 +113,16 @@ public class CourseWareServiceImpl implements CourseWareService {
 
 
         return courseWareClassIfyByClassifyId;
+    }
+
+    @Override
+    public Map findCourseWareAll(Integer index, Integer pageNum,String  name) throws Exception {
+        List<CourseWare> courseWareAll = courseWareMapper.findCourseWareAlllike(index*pageNum,pageNum,name);
+        Integer courseWareAllCount = courseWareMapper.findCourseWareAllCount(name);
+        Map map=new ConcurrentHashMap();
+        map.put("data",courseWareAll);
+        map.put("count",courseWareAllCount);
+        return map;
     }
 
 

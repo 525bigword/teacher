@@ -73,8 +73,23 @@ public interface CourseWareMapper {
      * 查所有CourseWare
      * @return
      */
-    @Select("select id,name,outline,explain,img,vido,create_time,update_time from courseware where")
+    @Select("select id,`name`,`outline`,`explain`,img,vido,create_time,update_time from courseware")
     List<CourseWare> findCourseWareAll();
+    /**
+     * 查所有CourseWare
+     * @return
+     */
+    @Select("select id,`name`,`outline`,`explain`,img,vido,create_time,update_time from courseware where `name` like " +
+            "CONCAT('%',#{name},'%') limit #{index},#{pageNum}")
+    List<CourseWare> findCourseWareAlllike(@Param("index") Integer index,@Param("pageNum") Integer pageNum,
+                                           @Param("name") String  name);
+
+    /**
+     * 查所有CourseWare得数量
+     * @return
+     */
+    @Select("select count(*) from courseware where `name`   like  CONCAT('%',#{name},'%')")
+    Integer findCourseWareAllCount(@Param("name") String  name);
 
     /**
      * 根据多个id查CourseWare

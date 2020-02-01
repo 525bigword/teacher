@@ -31,6 +31,9 @@ public interface PowerMapper {
     /**根据id查询数量*/
     @Select("select id from power where user_id=#{id} ")
     List<Integer> findPowerByUserId(@Param("id") Integer id);
+    /**根据userid查询classify_id*/
+    @Select("select classify_id from power where user_id=#{id} ")
+    List<Integer> findPowerToclassify_idByUserId(@Param("id") Integer id);
     /**根据id查询classifyId*/
     @Select("select id from power where user_id=#{id} ")
     List<Integer> findclassifyIdById(@Param("id") Integer id);

@@ -1,10 +1,12 @@
 package com.teacher.study.service;
 
 import com.teacher.study.enetity.*;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CourseWareService {
 
@@ -18,6 +20,8 @@ public interface CourseWareService {
 
     //查询所有CourseWare
     List<Power> findCourseWareAll(Integer id)throws Exception;
+    Map findCourseWareAll(Integer index, Integer pageNum, String  name)throws Exception;
+
 
     //查询CourseWare
     CourseWare findCourseWareByIdAndCode(CourseWare courseWare)throws Exception;

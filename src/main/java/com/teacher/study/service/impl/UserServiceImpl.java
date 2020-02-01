@@ -127,7 +127,6 @@ public class UserServiceImpl implements UserService {
     public void delUserById(User user) throws Exception {
         //courseWareService.delCourseWareClassIfy();
         List<Integer> powerByUserId = powerMapper.findPowerByUserId(user.getId());
-        //powerMapper.
         for (Integer i : powerByUserId) {
             powerMapper.delPowerById(i);
         }

@@ -96,10 +96,11 @@ public class UserController {
             User user=new User();
             user.setId(id);
             user.setPhone(phone);
-            user.setAcc(acc);
-            user.setPwd(pwd);
+
             user.setName(name);
             try {
+                user.setAcc(Base.encode(acc));
+                user.setPwd(Base.encode(pwd));
                 userService.upUserById(user,classify_id);
                 return new Return().yes("");
             } catch (Exception e) {

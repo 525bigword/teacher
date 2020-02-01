@@ -1,0 +1,74 @@
+2020-01-26 20:30:53.393  INFO 4672 --- [main] com.teacher.study.StudyApplication       : Starting StudyApplication on SC-201908131052 with PID 4672 (F:\ideaworkspace\teacher\target\classes started by Administrator in F:\ideaworkspace\teacher)
+2020-01-26 20:30:53.400  INFO 4672 --- [main] com.teacher.study.StudyApplication       : No active profile set, falling back to default profiles: default
+2020-01-26 20:30:55.675  INFO 4672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-26 20:30:55.678  INFO 4672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-26 20:30:55.713  INFO 4672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+2020-01-26 20:30:55.937  WARN 4672 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.teacher.study]' package. Please check your configuration.
+2020-01-26 20:30:56.180  INFO 4672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'druidConfiguration' of type [com.teacher.study.config.DruidConfiguration$$EnhancerBySpringCGLIB$$e8a070cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-26 20:30:56.256  INFO 4672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-26 20:30:56.621  INFO 4672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-26 20:30:56.635  INFO 4672 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-26 20:30:56.636  INFO 4672 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-01-26 20:30:56.842  INFO 4672 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-26 20:30:56.843  INFO 4672 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3324 ms
+2020-01-26 20:30:58.261  WARN 4672 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'dataSource': Could not bind properties to 'DataSource' : prefix=spring.datasource, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.datasource' to javax.sql.DataSource
+2020-01-26 20:30:58.282  INFO 4672 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-26 20:30:58.305  INFO 4672 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-26 20:30:58.310 ERROR 4672 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.datasource' to javax.sql.DataSource:
+
+    Property: spring.datasource.filters
+    Value: stat,wall,log4j
+    Origin: class path resource [application.properties]:27:27
+    Reason: org.apache.log4j.Logger
+
+Action:
+
+Update your application's configuration
+
+2020-01-26 20:34:40.250  INFO 6972 --- [main] com.teacher.study.StudyApplication       : Starting StudyApplication on SC-201908131052 with PID 6972 (F:\ideaworkspace\teacher\target\classes started by Administrator in F:\ideaworkspace\teacher)
+2020-01-26 20:34:40.264  INFO 6972 --- [main] com.teacher.study.StudyApplication       : No active profile set, falling back to default profiles: default
+2020-01-26 20:34:42.640  INFO 6972 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-01-26 20:34:42.643  INFO 6972 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-01-26 20:34:42.672  INFO 6972 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+2020-01-26 20:34:42.828  WARN 6972 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.teacher.study]' package. Please check your configuration.
+2020-01-26 20:34:43.233  INFO 6972 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'druidConfiguration' of type [com.teacher.study.config.DruidConfiguration$$EnhancerBySpringCGLIB$$608c65d3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-26 20:34:43.847  INFO 6972 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-26 20:34:44.581  INFO 6972 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-26 20:34:44.601  INFO 6972 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-26 20:34:44.604  INFO 6972 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-01-26 20:34:44.817  INFO 6972 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-26 20:34:44.817  INFO 6972 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4415 ms
+2020-01-26 20:34:46.246  WARN 6972 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'dataSource': Could not bind properties to 'DataSource' : prefix=spring.datasource, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.datasource' to javax.sql.DataSource
+2020-01-26 20:34:46.298  INFO 6972 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-26 20:34:46.356  INFO 6972 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-26 20:34:46.371 ERROR 6972 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.datasource' to javax.sql.DataSource:
+
+    Property: spring.datasource.filters
+    Value: stat,wall,log4j
+    Origin: class path resource [application.properties]:27:27
+    Reason: org.apache.log4j.Logger
+
+Action:
+
+Update your application's configuration
+

@@ -7,6 +7,7 @@ import com.teacher.study.enetity.CourseWareClassIfy;
 import com.teacher.study.enetity.Power;
 import com.teacher.study.enetity.User;
 import com.teacher.study.service.CourseWareClassIfyService;
+import com.teacher.study.service.CourseWareService;
 import com.teacher.study.service.UserService;
 import com.teacher.study.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +33,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PowerMapper powerMapper;
     @Autowired
-    private SqlSessionFactory sqlSessionTemplate;
+    private CourseWareService courseWareService;
+
     @Override
     public Integer findUserCount(String name) {
         Integer userCount=0;
@@ -123,7 +125,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void delUserById(User user) throws Exception {
+        //courseWareService.delCourseWareClassIfy();
         List<Integer> powerByUserId = powerMapper.findPowerByUserId(user.getId());
+        //powerMapper.
         for (Integer i : powerByUserId) {
             powerMapper.delPowerById(i);
         }

@@ -44,6 +44,13 @@ public class CourseWareController {
             return new Return().custom("数据不完整");
         }else{
             try {
+                CourseWare courseWareById = courseWareService.findCourseWareById(courseWare);
+                if(!courseWareById.getVido().equals(courseWare.getVido())){
+                    FtpUtil.delFile(courseWareById.getVido().substring(20));
+                }
+                if(!courseWareById.getImg().equals(courseWare.getImg())){
+                    FtpUtil.delFile(courseWareById.getImg().substring(20));
+                }
                 courseWareService.UpCourseWareClassIfy(courseWare);
                 return new Return().yes("");
             } catch (Exception e) {

@@ -35,6 +35,12 @@ public class CourseWareServiceImpl implements CourseWareService {
     private ClassIfyMapper classIfyMapper;
     @Autowired
     private PowerMapper powerMapper;
+
+    @Override
+    public CourseWare findCourseWareById(CourseWare courseWare) {
+        return courseWareMapper.findCourseWareById(courseWare);
+    }
+
     /**
      * 修改课件业务
      * @throws Exception

@@ -7,6 +7,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface CourseWareService {
+
+    //根据id查询CourseWare
+    CourseWare findCourseWareById(CourseWare courseWare);
+
     //修改课件业务
     void UpCourseWareClassIfy(CourseWare courseWare)throws Exception;
     //新增CourseWare

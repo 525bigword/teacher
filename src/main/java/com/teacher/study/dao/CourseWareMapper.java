@@ -123,7 +123,7 @@ public interface CourseWareMapper {
             "\tcourseware_classify\n" +
             "LEFT JOIN courseware ON courseware_classify.courseware_id = courseware.id\n" +
             "LEFT JOIN power ON courseware_classify.classify_id = power.classify_id\n" +
-            "where power.user_id=#{userid} and courseware.id=#{coursewareid} limit 0,1")
+            "where power.user_id=#{userid} and courseware_classify.courseware_id=#{coursewareid} limit 0,1")
     @Results({
             @Result(column = "classify_id",property = "value"),
             @Result(column = "courseware_id",property = "id")

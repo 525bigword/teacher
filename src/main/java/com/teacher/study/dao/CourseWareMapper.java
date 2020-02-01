@@ -28,8 +28,8 @@ public interface CourseWareMapper {
      * 根据Id修改CourseWare
      * @param courseWare
      */
-    @Update("update courseware set name=#{name},outline=#{outline},explain=#{explain}," +
-            "update_time=#{updatetime} where id=#{id}")
+    @Update("update courseware set `name`=#{name},`outline`=#{outline},`explai`=#{explain}," +
+            "`update_time`=#{updatetime} where id=#{id}")
     void upCourseWare(CourseWare courseWare);
     /**
      * 新增courseware
@@ -67,7 +67,7 @@ public interface CourseWareMapper {
      * @param courseWare
      * @return
      */
-    @Select("select id,`name`,outline,`explain`,img,vido,create_time,update_time from courseware where id=#{id}")
+    @Select("select id,`name`,`outline`,`explain`,img,vido,create_time,update_time from courseware where id=#{id}")
     CourseWare findCourseWareById(CourseWare courseWare);
     /**
      * 查所有CourseWare

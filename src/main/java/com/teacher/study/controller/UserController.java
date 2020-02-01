@@ -100,8 +100,8 @@ public class UserController {
             user.setName(name);
             try {
                 user.setAcc(Base.encode(acc));
-                user.setPwd(Base.encode(pwd));
                 userService.upUserById(user,classify_id);
+
                 return new Return().yes("");
             } catch (Exception e) {
                 e.printStackTrace();

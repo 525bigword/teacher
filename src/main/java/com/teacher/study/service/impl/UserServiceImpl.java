@@ -108,6 +108,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void upUserById(User user ,List<Integer> classify_id) throws Exception {
         try{
+            if("".equals(user.getPwd())){
+                UserMapper.upUserById2(user);
+            }
             UserMapper.upUserById(user);
             powerMapper.delPowerByUserId(user.getId());
             Power power=new Power();

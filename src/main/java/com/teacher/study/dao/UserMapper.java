@@ -69,6 +69,9 @@ public interface UserMapper {
     /**修改账号信息*/
     @Update("update user set acc=#{acc},pwd=#{pwd},name=#{name},phone=#{phone},note=#{note} where id=#{id}")
     void upUserById(User user);
+    /**修改账号信息*/
+    @Update("update user set acc=#{acc},name=#{name},phone=#{phone},note=#{note} where id=#{id}")
+    void upUserById2(User user);
     /**修改账号部分*/
     @Update("update user set pwd=#{pwd},name=#{name},phone=#{phone} where id=#{id}")
     void upUserByIda(User user);

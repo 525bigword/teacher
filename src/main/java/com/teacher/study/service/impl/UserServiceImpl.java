@@ -8,6 +8,7 @@ import com.teacher.study.enetity.Power;
 import com.teacher.study.enetity.User;
 import com.teacher.study.service.CourseWareClassIfyService;
 import com.teacher.study.service.UserService;
+import com.teacher.study.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,7 +16,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.unit.DataUnit;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -106,6 +109,8 @@ public class UserServiceImpl implements UserService {
             powerMapper.delPowerByUserId(user.getId());
             Power power=new Power();
             power.setUserid(user.getId());
+            power.setCreatetime(DateUtil.getTime());
+            power.setUpdatetime(DateUtil.getTime());
             for (Integer i : classify_id) {
                 power.setClassifyid(i);
                 powerMapper.savePower(power);

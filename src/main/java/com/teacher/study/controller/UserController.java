@@ -79,6 +79,7 @@ public class UserController {
     }
     @PostMapping("/setuser")
     public Return setUser(@RequestBody JSONObject json){
+        Integer id = json.getInteger("id");
         String acc = json.getString("acc");
         String pwd = json.getString("pwd");
         String name = json.getString("name");
@@ -87,6 +88,7 @@ public class UserController {
         List<Integer> classify_id = JSONObject.parseArray(classify.toJSONString(), Integer.class);
         String note = json.getString("note");
             User user=new User();
+            user.setId(id);
             user.setPhone(phone);
             user.setAcc(acc);
             user.setPwd(pwd);

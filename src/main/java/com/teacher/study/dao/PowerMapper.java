@@ -33,6 +33,6 @@ public interface PowerMapper {
     List<Integer> findPowerByUserId(@Param("id") Integer id);
     @Delete("delete from power where id=#{id}")
     void delPowerById(@Param("id")Integer id);
-    @Delete("delete from power where userid=#{id}")
+    @Delete("delete from power where user_id=#{id}")
     void delPowerByUserId(@Param("id")Integer id);
 }

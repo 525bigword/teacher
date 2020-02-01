@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -43,6 +44,7 @@ public class UserController {
         Integer pageNum = json.getInteger("pageNum");
         String name = json.getString("name");
         List<User> userBynames = null;
+        List<User> users=new ArrayList<>();
        name= name.replace(" ","");
         try {
             index=index-1;
@@ -54,9 +56,14 @@ public class UserController {
             }
             Integer userCount = userService.findUserCount(name);
             userBynames = userService.findUserBynames(name, index, pageNum,id);
+            for (User u : userBynames) {
+                u.setAcc(Base64.decode(u.getAcc()));
+                u.setPwd(Base64.decode(u.getPwd()));
+                users.add(u);
+            }
             Map map=new ConcurrentHashMap();
             Double totalPages=Double.valueOf((userCount/pageNum));
-            map.put("data",userBynames);
+            map.put("data",users);
             map.put("count",userCount);
             map.put("totalPages",Math.ceil(totalPages)<=0?1:(int)Math.ceil(totalPages));
             return new Return().yes(map);

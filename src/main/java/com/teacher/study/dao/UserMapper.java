@@ -42,7 +42,7 @@ public interface UserMapper {
     })
     List<User> findUserByLi(@Param("index") Integer index,@Param("pageNum")Integer pageNum,@Param("id")Integer id);
 
-    @Select("select count(*) from `user` where acc =#{name} ")
+    @Select("select count(*) from user where acc =#{name} ")
     Integer findUserByAccCount(@Param("name") String name);
 
     /**模糊查询所有数量*/

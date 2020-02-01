@@ -166,11 +166,12 @@ public class UserController {
                 user.setUpdatetime(DateUtil.getTime());
                 user.setCreatetime(DateUtil.getTime());
                 Integer userByacc = userService.findUserByacc(acc);
-                if(userByacc>0){
+                if(userByacc>1){
                     return new Return().no();
+                }else{
+                    userService.saveUser(user,classify_id);
+                    return new Return().yes("");
                 }
-                userService.saveUser(user,classify_id);
-                return new Return().yes("");
             } catch (Exception e) {
                 return new Return().no();
             }

@@ -9,6 +9,7 @@ import com.teacher.study.enetity.User;
 import com.teacher.study.service.CourseWareClassIfyService;
 import com.teacher.study.service.CourseWareService;
 import com.teacher.study.service.UserService;
+import com.teacher.study.util.Base;
 import com.teacher.study.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
@@ -135,7 +136,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer findUserByacc(String acc) throws Exception {
-        Integer userByAccCount = UserMapper.findUserByAccCount(acc);
+        Integer userByAccCount = UserMapper.findUserByAccCount(Base.encode(acc));
         return userByAccCount;
     }
 

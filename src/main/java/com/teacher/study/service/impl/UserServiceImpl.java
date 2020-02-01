@@ -110,9 +110,10 @@ public class UserServiceImpl implements UserService {
         try{
             if("".equals(user.getPwd())){
                 UserMapper.upUserById2(user);
+            }else{
+                user.setPwd(Base.encode(user.getPwd()));
+                UserMapper.upUserById(user);
             }
-            user.setPwd(Base.encode(user.getPwd()));
-            UserMapper.upUserById(user);
             powerMapper.delPowerByUserId(user.getId());
             Power power=new Power();
             power.setUserid(user.getId());

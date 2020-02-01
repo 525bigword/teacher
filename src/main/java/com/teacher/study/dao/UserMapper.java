@@ -20,10 +20,7 @@ public interface UserMapper {
             @Result(column = "name",property = "name"),
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),
-            @Result(column = "create_time",property = "createtime"),
-            @Result(column = "update_time",property = "updatetime",
-                many = @Many(select = "com.teacher.study.dao.PowerMapper.findPowerToclassify_idByUserIda")
-            )
+            @Result(column = "create_time",property = "createtime")
     })
     List<User> findUserByLike(@Param("name")String name,@Param("index") Integer index,@Param("pageNum")Integer pageNum);
     /**模糊查询所有*/
@@ -37,10 +34,7 @@ public interface UserMapper {
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),
             @Result(column = "create_time",property = "createtime"),
-            @Result(column = "update_time",property = "updatetime"),
-            @Result(column = "id",property = "powers",
-                    many = @Many(select = "com.teacher.study.dao.PowerMapper.findPowerToclassify_idByUserIda")
-            )
+            @Result(column = "update_time",property = "updatetime")
     })
     List<User> findUserByLi(@Param("index") Integer index,@Param("pageNum")Integer pageNum,@Param("id")Integer id);
 

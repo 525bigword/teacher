@@ -57,10 +57,11 @@ public interface UserMapper {
     void saveUser(User user);
 
     /**登录业务*/
-    @Select("select id,acc,name,phone,note,create_time,update_time from user where acc=#{acc} and pwd=#{pwd}")
+    @Select("select id,acc,pwd,name,phone,note,create_time,update_time from user where acc=#{acc} and pwd=#{pwd}")
     @Results({
             @Result(id = true,column = "id",property = "id"),
             @Result(column = "acc",property = "acc"),
+            @Result(column = "pwd",property = "pwd"),
             @Result(column = "name",property = "name"),
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),

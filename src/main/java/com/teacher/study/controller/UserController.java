@@ -125,7 +125,6 @@ public class UserController {
 
     @PostMapping("/add")//
     public Return save(@RequestBody JSONObject json){
-        String id = json.getString("id");
         String acc = json.getString("acc");
         String pwd = json.getString("pwd");
         String name = json.getString("name");

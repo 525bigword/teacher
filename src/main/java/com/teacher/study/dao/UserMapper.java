@@ -25,7 +25,7 @@ public interface UserMapper {
     Integer findUserCount();
     /**新增user*/
     @Insert("insert into user values(null,#{acc},#{pwd},#{name},#{phone},#{note},#{createtime},#{updatetime})")
-    @Options(useGeneratedKeys=true)
+    @Options(useGeneratedKeys=true,keyColumn = "id",keyProperty = "id")
     void saveUser(User user);
 
     /**登录业务*/

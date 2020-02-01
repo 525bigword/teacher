@@ -146,6 +146,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void upUserById(User user) throws Exception {
-        UserMapper.upUserByIda(user);
+        if("".equals(user.getPwd())){
+            UserMapper.upUserById2(user);
+        }else{
+            user.setPwd(Base.encode(user.getPwd()));
+            UserMapper.upUserByIda(user);
+        }
+
     }
 }

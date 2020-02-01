@@ -8,11 +8,11 @@ public class DateUtil {
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int date = c.get(Calendar.DATE);
-        /*int hour = c.get(Calendar.HOUR_OF_DAY);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
         int minute = c.get(Calendar.MINUTE);
-        int second = c.get(Calendar.SECOND);*/
+        int second = c.get(Calendar.SECOND);
         //System.out.println(year + "/" + month + "/" + date + " " +hour + ":" +minute + ":" + second);
-        return year + "/" + (month+1) + "/" + date;
+        return year + "/" + (month+1) + "/" + date + " " + hour + ":" + minute + ":" +second;
     }
 
 }

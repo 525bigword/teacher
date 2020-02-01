@@ -80,7 +80,8 @@ public class CourseWareController {
                         index, pageNum);
                 Integer powerByIdCount = powerService.findPowerByIdCount(powerByUserIdAndnamepage.get("ids"),name);
                 Map<String,Object> map=new ConcurrentHashMap<>();
-                Double totalPages=Double.valueOf(((double)powerByIdCount/(double)pageNum));
+                Double totalPages=Double.valueOf(powerByIdCount%pageNum==0?(powerByIdCount/pageNum):
+                        (powerByIdCount/pageNum)+1);
                 map.put("data",powerByUserIdAndnamepage.get("data"));
                 map.put("count",powerByIdCount);
                 map.put("totalPages",(int)Math.ceil(totalPages));

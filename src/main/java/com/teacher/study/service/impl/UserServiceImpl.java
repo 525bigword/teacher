@@ -49,9 +49,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findUserBynames(String name, Integer index, Integer pageNum,Integer id) throws Exception {
         if("".equals(name)){
-            return   UserMapper.findUserByLi(index, pageNum, id);
+            return   UserMapper.findUserByLi(index*pageNum, pageNum, id);
         }else{
-            return  UserMapper.findUserByLike(name, index, pageNum);
+            return  UserMapper.findUserByLike(name, index*pageNum, pageNum);
         }
     }
 

@@ -80,7 +80,8 @@ public interface CourseWareMapper {
      * @return
      */
     @Select("select id,`name`,`outline`,`explain`,img,vido,create_time,update_time from courseware where `name` like " +
-            "CONCAT('%',#{name},'%') limit #{index},#{pageNum}")
+            "CONCAT('%',#{name},'%') or `outline` like CONCAT('%',#{name},'%') or `explain` like CONCAT('%',#{name},'%') limit #{index}," +
+            "#{pageNum}")
     List<CourseWare> findCourseWareAlllike(@Param("index") Integer index,@Param("pageNum") Integer pageNum,
                                            @Param("name") String  name);
 

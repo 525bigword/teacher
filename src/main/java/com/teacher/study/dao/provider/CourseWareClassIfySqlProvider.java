@@ -57,7 +57,9 @@ public class CourseWareClassIfySqlProvider {
             sql.append(" ="+ids.get(0));
         }
         if(!"".equals(name)){
-            sql.append(" and name like '%"+name+"%'");
+            sql.append(" and（name like '%"+name+"%'");
+            sql.append(" and outline like '%"+name+"%'");
+            sql.append(" and explain like '%"+name+"%')");
         }
         sql.append(" limit "+index*pageNum+","+pageNum);
         System.out.println(sql.toString());

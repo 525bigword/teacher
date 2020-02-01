@@ -36,7 +36,7 @@ public interface UserMapper {
             @Result(column = "note",property = "note"),
             @Result(column = "create_time",property = "createtime"),
             @Result(column = "update_time",property = "updatetime"),
-            @Result(column = "id",property = "classIfies",
+            @Result(column = "id",property = "powers",
                     many = @Many(select = "com.teacher.study.dao.PowerMapper.findPowerToclassify_idByUserIda")
             )
     })

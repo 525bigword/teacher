@@ -27,6 +27,7 @@ public interface CourseWareClassIfyMapper {
     @Delete("delete from courseware_classify where id=#{id}")
     void delCourseWareClassIfy(CourseWareClassIfy courseWareClassIfy);
 
+
     /**
      * 新增courseware_classify
      * @param courseWareClassIfy
@@ -131,6 +132,11 @@ public interface CourseWareClassIfyMapper {
             @Result(column = "update_time",property = "updatetime"),
     })
     List<CourseWareClassIfy> findCoursreClassIfyByid(@Param("classifyid") Integer classifyid);
+
+    @Select("select id from courseware_classify where courseware_id=#{coursewareid} and classify_id=#{classifyid}")
+    Integer findCourseWareClassIfyIdByCourseWareIdAndClassIfyId(@Param("coursewareid")Integer coursewareid,@Param(
+            "classifyid")Integer classifyid);
+
     @SelectProvider(type = PowerSqlProvider.class,method = "courseware_classify")
     @Results({
             @Result(id = true,column = "id",property = "id"),

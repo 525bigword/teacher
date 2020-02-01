@@ -68,7 +68,11 @@ public class CourseWareServiceImpl implements CourseWareService {
         //删除对应分类
         CourseWareClassIfy courseWareClassIfy=new CourseWareClassIfy();
         courseWareClassIfy.setId(courseWareToclassifyAndCourseWare.getValue());
-        courseWareClassIfyMapper.delCourseWareClassIfy(courseWareClassIfy);
+        Integer coursewareclassifyid =
+                courseWareClassIfyMapper.findCourseWareClassIfyIdByCourseWareIdAndClassIfyId(courseWareToclassifyAndCourseWare.getId(), courseWareToclassifyAndCourseWare.getValue());
+        CourseWareClassIfy courseWareClassIfy1=new CourseWareClassIfy();
+        courseWareClassIfy1.setId(coursewareclassifyid);
+        courseWareClassIfyMapper.delCourseWareClassIfy(courseWareClassIfy1);
         //删除文件
         String uri=Index.class.getResource("/").toString();
         String url=uri.substring(0, uri.indexOf("/",uri.indexOf("/")+1 ));

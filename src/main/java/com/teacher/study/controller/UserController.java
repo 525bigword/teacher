@@ -2,22 +2,19 @@ package com.teacher.study.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.teacher.study.enetity.Page;
-import com.teacher.study.enetity.Power;
 import com.teacher.study.enetity.User;
-import com.teacher.study.service.PowerService;
 import com.teacher.study.service.UserService;
-import com.teacher.study.util.Base64;
+import com.teacher.study.util.Base;
 import com.teacher.study.util.DateUtil;
 import com.teacher.study.util.JwtUtil;
 import com.teacher.study.util.Return;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -57,8 +54,7 @@ public class UserController {
             Integer userCount = userService.findUserCount(name);
             userBynames = userService.findUserBynames(name, index, pageNum,id);
             for (User u : userBynames) {
-                u.setAcc(Base64.decode(u.getAcc()));
-                u.setPwd(Base64.decode(u.getPwd()));
+                u.setAcc(Base.toencode(u.getAcc()));
                 users.add(u);
             }
             Map map=new ConcurrentHashMap();
@@ -117,10 +113,11 @@ public class UserController {
             log.info("账号或密码不能为空");
             return new Return().custom("账号或密码不能为空");
         }else{
-            log.info(user.toString());
-            user.setAcc(Base64.encode(user.getAcc()));
-            user.setPwd(Base64.encode(user.getPwd()));
+
             try {
+                log.info(user.toString());
+                user.setAcc(Base.encode(user.getAcc()));
+                user.setPwd(Base.encode(user.getPwd()));
                 User login = userService.login(user);
                 if(null==login.getId()){
                     return new Return().custom("没有此账号");
@@ -159,8 +156,8 @@ public class UserController {
         }else{
             try {
                 User user =new User();
-                user.setAcc(Base64.encode(acc));
-                user.setPwd(Base64.encode(pwd));
+                user.setAcc(Base.encode(acc));
+                user.setPwd(Base.encode(pwd));
                 user.setPhone(phone);
                 user.setName(name);
                 user.setNote(note);

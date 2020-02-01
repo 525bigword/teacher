@@ -37,7 +37,7 @@ public interface PowerMapper {
     /**根据userid查询classify_id*/
     @Select("select classify_id from power where user_id=#{id} ")
     @Results({
-            @Result(column = "classify_id",property = "classifyid",
+            @Result(column = "classify_id",property = "classIfy",
                 one = @One(select = "com.teacher.study.dao.ClassIfyMapper.findClassIfyById")
             ),
     })

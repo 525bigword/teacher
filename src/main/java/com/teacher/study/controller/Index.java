@@ -1,21 +1,13 @@
 package com.teacher.study.controller;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
-import com.google.common.base.Utf8;
 import com.teacher.study.enetity.ClassIfy;
 import com.teacher.study.enetity.ClassIfyModel;
 import com.teacher.study.enetity.CourseWare;
-import com.teacher.study.enetity.Power;
 import com.teacher.study.service.ClassIfyService;
 import com.teacher.study.service.CourseWareClassIfyService;
 import com.teacher.study.service.CourseWareService;
-import com.teacher.study.util.Base64;
 import com.teacher.study.util.Return;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.LineIterator;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

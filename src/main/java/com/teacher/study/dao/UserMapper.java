@@ -10,12 +10,13 @@ import java.util.List;
 @Repository
 public interface UserMapper {
     /**模糊查询所有*/
-    @Select("select id,`name`,acc,phone,note,create_time,update_time from `user` where `name` like CONCAT('%'," +
+    @Select("select id,`name`,acc,pwd,phone,note,create_time,update_time from `user` where `name` like CONCAT('%'," +
             "#{name},'%') limit #{index}," +
             "#{pageNum}")
     @Results({
             @Result(id = true,column = "id",property = "id"),
             @Result(column = "acc",property = "acc"),
+            @Result(column = "pwd",property = "pwd"),
             @Result(column = "name",property = "name"),
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),
@@ -26,11 +27,12 @@ public interface UserMapper {
     })
     List<User> findUserByLike(@Param("name")String name,@Param("index") Integer index,@Param("pageNum")Integer pageNum);
     /**模糊查询所有*/
-    @Select("select id,`name`,acc,phone,note,create_time,update_time from `user` where id !=#{id} limit #{index}," +
+    @Select("select id,`name`,acc,pwd,phone,note,create_time,update_time from `user` where id !=#{id} limit #{index}," +
             "#{pageNum}")
     @Results({
             @Result(id = true,column = "id",property = "id"),
             @Result(column = "acc",property = "acc"),
+            @Result(column = "pwd",property = "pwd"),
             @Result(column = "name",property = "name"),
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),

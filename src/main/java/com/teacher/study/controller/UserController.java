@@ -55,6 +55,7 @@ public class UserController {
             userBynames = userService.findUserBynames(name, index, pageNum,id);
             for (User u : userBynames) {
                 u.setAcc(Base.toencode(u.getAcc()));
+                u.setPwd(Base.toencode(u.getPwd()));
                 users.add(u);
             }
             Map map=new ConcurrentHashMap();

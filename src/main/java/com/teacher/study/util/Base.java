@@ -27,4 +27,9 @@ public class Base {
         //String encodedText = encoder.encodeToString(code);
         return new String(decoder.decode(code), "UTF-8");
     }
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        String encode = encode("123");
+        System.out.println(toencode(encode));
+    }
 }

@@ -122,8 +122,8 @@ public class UserController {
                 user.setAcc(Base.encode(user.getAcc()));
                 user.setPwd(Base.encode(user.getPwd()));
                 User login = userService.login(user);
-                user.setAcc(Base.toencode(login.getAcc()));
-                user.setPwd(Base.toencode(login.getPwd()));
+                login.setAcc(Base.toencode(login.getAcc()));
+                login.setPwd(Base.toencode(login.getPwd()));
                 if(null==login.getId()){
                     return new Return().custom("没有此账号");
                 }

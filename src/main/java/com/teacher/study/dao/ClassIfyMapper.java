@@ -56,7 +56,7 @@ public interface ClassIfyMapper {
      * 修改classIfy
      * @param classIfy
      */
-    @Update("update classify set superio_id=#{superiorid},`name`=#{name},`explain`=#{explain},update_time=#{updatetime} " +
+    @Update("update classify set `name`=#{name},update_time=#{updatetime} " +
             "where id=#{id}")
     void update(ClassIfy classIfy);
     /**

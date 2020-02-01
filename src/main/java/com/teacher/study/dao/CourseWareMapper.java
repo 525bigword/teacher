@@ -28,7 +28,7 @@ public interface CourseWareMapper {
      * 根据Id修改CourseWare
      * @param courseWare
      */
-    @Update("update courseware set `name`=#{name},`outline`=#{outline},`explain`=#{explain}," +
+    @Update("update courseware set `name`=#{name},img=#{img},vido=#{vido},`outline`=#{outline},`explain`=#{explain}," +
             "`update_time`=#{updatetime} where id=#{id}")
     void upCourseWare(CourseWare courseWare);
     /**

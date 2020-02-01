@@ -159,6 +159,10 @@ public class UserController {
                 user.setNote(note);
                 user.setUpdatetime(DateUtil.getTime());
                 user.setCreatetime(DateUtil.getTime());
+                Integer userByacc = userService.findUserByacc(acc);
+                if(userByacc>0){
+                    return new Return().no();
+                }
                 userService.saveUser(user,classify_id);
                 return new Return().yes("");
             } catch (Exception e) {

@@ -134,6 +134,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer findUserByacc(String acc) throws Exception {
+        Integer userByAccCount = UserMapper.findUserByAccCount(acc);
+        return userByAccCount;
+    }
+
+    @Override
     public void upUserById(User user) throws Exception {
         UserMapper.upUserByIda(user);
     }

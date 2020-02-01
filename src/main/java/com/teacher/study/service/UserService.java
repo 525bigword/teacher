@@ -21,6 +21,8 @@ public interface UserService {
     void upUserById(User user, List<Integer> classify_id)throws Exception;
     //删除用户User
     void delUserById(User user)throws Exception;
+    //按用户名查询User
+    Integer findUserByacc(String acc)throws Exception;
     //修改个人信息
     void upUserById(User user)throws Exception;
 }

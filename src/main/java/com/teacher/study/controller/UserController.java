@@ -42,6 +42,7 @@ public class UserController {
         Integer pageNum = json.getInteger("pageNum");
         String name = json.getString("name");
         List<User> userBynames = null;
+       name= name.replace(" ","");
         try {
             index=index-1;
             if(index==null||index<=0){

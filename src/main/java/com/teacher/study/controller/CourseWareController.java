@@ -44,6 +44,7 @@ public class CourseWareController {
             return new Return().custom("数据不完整");
         }else{
             try {
+                courseWare.setName(courseWare.getName().replace(" ",""));
                 CourseWare courseWareById = courseWareService.findCourseWareById(courseWare);
                 if(!courseWareById.getVido().equals(courseWare.getVido())){
                     FtpUtil.delFile(courseWareById.getVido().substring(20));
@@ -69,6 +70,7 @@ public class CourseWareController {
         Integer index=json.getInteger("index");
         Integer pageNum=json.getInteger("pageNum");
         String name=json.getString("name");
+        name=name.replace(" ","");
         try {
             index=index-1;
             if(index==null||index<0){
@@ -105,6 +107,7 @@ public class CourseWareController {
         Integer pageNum=json.getInteger("pageNum");
         String name=json.getString("name");
         Integer userid=json.getInteger("userid");
+        name=name.replace(" ","");
             try {
                 index=index-1;
                 if(index==null||index<0){

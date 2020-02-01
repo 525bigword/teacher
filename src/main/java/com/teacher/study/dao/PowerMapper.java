@@ -34,9 +34,19 @@ public interface PowerMapper {
     /**根据userid查询classify_id*/
     @Select("select classify_id from power where user_id=#{id} ")
     List<Integer> findPowerToclassify_idByUserId(@Param("id") Integer id);
+    /**根据userid查询classify_id*/
+    @Select("select classify_id from power where user_id=#{id} ")
+    @Results({
+            @Result(column = "classify_id",property = "classifyid",
+                one = @One(select = "com.teacher.study.dao.ClassIfyMapper.findClassIfyById")
+            ),
+    })
+    List<Power> findPowerToclassify_idByUserIda(@Param("id") Integer id);
     /**根据id查询classifyId*/
     @Select("select id from power where user_id=#{id} ")
     List<Integer> findclassifyIdById(@Param("id") Integer id);
+    @Select("select classify_id from power where user_id=#{id} ")
+    List<Integer> findPowerToClassIfyIdByUserId(@Param("id") Integer id);
     @Delete("delete from power where id=#{id}")
     void delPowerById(@Param("id")Integer id);
     @Delete("delete from power where user_id=#{id}")

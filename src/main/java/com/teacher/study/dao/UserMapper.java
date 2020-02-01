@@ -20,7 +20,9 @@ public interface UserMapper {
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),
             @Result(column = "create_time",property = "createtime"),
-            @Result(column = "update_time",property = "updatetime")
+            @Result(column = "update_time",property = "updatetime",
+                many = @Many(select = "com.teacher.study.dao.PowerMapper.findPowerToclassify_idByUserIda")
+            )
     })
     List<User> findUserByLike(@Param("name")String name,@Param("index") Integer index,@Param("pageNum")Integer pageNum);
     /**模糊查询所有*/
@@ -33,7 +35,10 @@ public interface UserMapper {
             @Result(column = "phone",property = "phone"),
             @Result(column = "note",property = "note"),
             @Result(column = "create_time",property = "createtime"),
-            @Result(column = "update_time",property = "updatetime")
+            @Result(column = "update_time",property = "updatetime"),
+            @Result(column = "id",property = "classIfies",
+                    many = @Many(select = "com.teacher.study.dao.PowerMapper.findPowerToclassify_idByUserIda")
+            )
     })
     List<User> findUserByLi(@Param("index") Integer index,@Param("pageNum")Integer pageNum,@Param("id")Integer id);
 
@@ -52,7 +57,16 @@ public interface UserMapper {
     void saveUser(User user);
 
     /**登录业务*/
-    @Select("select id,name,phone,note,create_time,update_time from user where acc=#{acc} and pwd=#{pwd}")
+    @Select("select id,acc,name,phone,note,create_time,update_time from user where acc=#{acc} and pwd=#{pwd}")
+    @Results({
+            @Result(id = true,column = "id",property = "id"),
+            @Result(column = "acc",property = "acc"),
+            @Result(column = "name",property = "name"),
+            @Result(column = "phone",property = "phone"),
+            @Result(column = "note",property = "note"),
+            @Result(column = "create_time",property = "createtime"),
+            @Result(column = "update_time",property = "updatetime")
+    })
     User findUserByAccAndPwd(User user);
 
     /**修改账号信息*/

@@ -1,6 +1,7 @@
 package com.teacher.study.enetity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer id;
@@ -11,8 +12,15 @@ public class User implements Serializable {
     private String note;
     private String createtime;
     private String updatetime;
+    private List<Power> powers;
 
+    public List<Power> getPowers() {
+        return powers;
+    }
 
+    public void setPowers(List<Power> powers) {
+        this.powers = powers;
+    }
 
     public Integer getId() {
         return id;

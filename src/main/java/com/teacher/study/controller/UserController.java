@@ -39,6 +39,7 @@ public class UserController {
     @PostMapping("/query")
     public Return query(@RequestBody JSONObject json){
         Integer index = json.getInteger("index");
+        Integer id = json.getInteger("id");
         Integer pageNum = json.getInteger("pageNum");
         String name = json.getString("name");
         List<User> userBynames = null;
@@ -52,7 +53,7 @@ public class UserController {
                 pageNum=6;
             }
             Integer userCount = userService.findUserCount(name);
-            userBynames = userService.findUserBynames(name, index, pageNum);
+            userBynames = userService.findUserBynames(name, index, pageNum,id);
             Map map=new ConcurrentHashMap();
             Double totalPages=Double.valueOf((userCount/pageNum));
             map.put("data",userBynames);
@@ -123,6 +124,17 @@ public class UserController {
             } catch (Exception e) {
                 return new Return().no();
             }
+        }
+    }
+
+    @PostMapping("/setme")
+    public Return setme(@RequestBody User user){
+        try {
+            userService.upUserById(user);
+            return new Return().yes("");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Return().no();
         }
     }
 

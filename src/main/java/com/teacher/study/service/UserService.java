@@ -12,7 +12,7 @@ public interface UserService {
     //查询数量
     Integer findUserCount(String name);
     //模糊查询name
-    List<User> findUserBynames(String name,Integer index,Integer pageNum)throws Exception;
+    List<User> findUserBynames(String name,Integer index,Integer pageNum,Integer id)throws Exception;
     //新增User
     void saveUser(User user,List<Integer> classifyid)throws Exception;
     //登录业务
@@ -21,4 +21,6 @@ public interface UserService {
     void upUserById(User user, List<Integer> classify_id)throws Exception;
     //删除用户User
     void delUserById(User user)throws Exception;
+    //修改个人信息
+    void upUserById(User user)throws Exception;
 }

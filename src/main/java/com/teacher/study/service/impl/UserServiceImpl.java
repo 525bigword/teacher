@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUserBynames(String name, Integer index, Integer pageNum) throws Exception {
+    public List<User> findUserBynames(String name, Integer index, Integer pageNum,Integer id) throws Exception {
         if("".equals(name)){
-            return UserMapper.findUserByLi(index, pageNum);
+            return UserMapper.findUserByLi(index, pageNum,id);
         }else{
             return  UserMapper.findUserByLike(name, index, pageNum);
         }
@@ -131,5 +131,10 @@ public class UserServiceImpl implements UserService {
             powerMapper.delPowerById(i);
         }
         UserMapper.delUserById(user);
+    }
+
+    @Override
+    public void upUserById(User user) throws Exception {
+        UserMapper.upUserByIda(user);
     }
 }

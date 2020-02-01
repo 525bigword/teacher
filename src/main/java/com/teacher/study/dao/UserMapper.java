@@ -14,9 +14,9 @@ public interface UserMapper {
             "#{pageNum}")
     List<User> findUserByLike(@Param("name")String name,@Param("index") Integer index,@Param("pageNum")Integer pageNum);
     /**模糊查询所有*/
-    @Select("select id,`name`,phone,note,create_time,update_time from `user` limit #{index}," +
+    @Select("select id,`name`,phone,note,create_time,update_time from `user` where id !=#{id} limit #{index}," +
             "#{pageNum}")
-    List<User> findUserByLi(@Param("index") Integer index,@Param("pageNum")Integer pageNum);
+    List<User> findUserByLi(@Param("index") Integer index,@Param("pageNum")Integer pageNum,@Param("id")Integer id);
     /**模糊查询所有数量*/
     @Select("select count(*) from `user` where `name` like CONCAT('%',#{name},'%') ")
     Integer findUserCountlike(@Param("name")String name);
@@ -35,6 +35,9 @@ public interface UserMapper {
     /**修改账号信息*/
     @Update("update user set acc=#{acc},pwd=#{pwd},name=#{name},phone=#{phone},note=#{note} where id=#{id}")
     void upUserById(User user);
+    /**修改账号部分*/
+    @Update("update user set acc=#{acc},pwd=#{pwd},name=#{name},phone=#{phone} where id=#{id}")
+    void upUserByIda(User user);
     /**删除用户*/
     @Delete("delete from user where id=#{id}")
     void delUserById(User user);

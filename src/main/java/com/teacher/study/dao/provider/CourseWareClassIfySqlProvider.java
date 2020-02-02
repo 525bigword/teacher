@@ -44,7 +44,7 @@ public class CourseWareClassIfySqlProvider {
         return  sql.toString();
     }
     public String findCourseWare(List<Integer> ids,Integer index,Integer pageNum,String name){
-        StringBuffer sql=new StringBuffer("select id,`name`,outline,`explain`,img,vido,code,create_time,update_time " +
+        StringBuffer sql=new StringBuffer("select id,`name`,outline,`explain`,img,vido,`code`,create_time,update_time " +
                 "from courseware where id ");
         if(ids.size()>1){
             sql.append(" in (");
@@ -61,6 +61,7 @@ public class CourseWareClassIfySqlProvider {
             sql.append(" and outline like '%"+name+"%'");
             sql.append(" and explain like '%"+name+"%')");
         }
+        sql.append(" ORDER BY id desc");
         sql.append(" limit "+index*pageNum+","+pageNum);
         System.out.println(sql.toString());
         return  sql.toString();

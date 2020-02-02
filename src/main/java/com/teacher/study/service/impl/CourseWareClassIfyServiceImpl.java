@@ -65,7 +65,7 @@ public class CourseWareClassIfyServiceImpl implements CourseWareClassIfyService 
     @Override
     public Map findCourseWareClassIfyByClassifyId(List<Integer> classifyid, Integer index, Integer pageNum) {
         ClassIfy classIfy=new ClassIfy();
-        classIfy.setSuperiorid(classifyid.get(0));
+        classIfy.setId(classifyid.get(0));
         List<ClassIfy> classIfyBySuperioId = classIfyMapper.findClassIfyBySuperioId(classIfy);
         List<CourseWareClassIfy> coursreClassIfyByid=null;
         if(classIfyBySuperioId.size()==0){

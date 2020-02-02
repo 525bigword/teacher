@@ -79,9 +79,10 @@ public interface CourseWareMapper {
      * 查所有CourseWare
      * @return
      */
-    @Select("select id,`name`,`outline`,`explain`,img,vido,code,create_time,update_time from courseware where `name` " +
+    @Select("select id,`name`,`outline`,`explain`,img,vido,`code`,create_time,update_time from courseware where `name` " +
             "like " +
-            "CONCAT('%',#{name},'%') or `outline` like CONCAT('%',#{name},'%') or `explain` like CONCAT('%',#{name},'%') limit #{index}," +
+            "CONCAT('%',#{name},'%') or `outline` like CONCAT('%',#{name},'%') or `explain` like CONCAT('%',#{name}," +
+            "'%') order by id desc limit #{index}," +
             "#{pageNum}")
     @Results({
             @Result(id = true,column = "id",property = "id"),

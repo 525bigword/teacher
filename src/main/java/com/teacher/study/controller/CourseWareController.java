@@ -152,8 +152,7 @@ public class CourseWareController {
     public ResponseEntity<String> delList(@RequestBody JSONObject json){
         JSONArray idjsons = json.getJSONArray("ids");
         List<Integer> ids = JSONObject.parseArray(idjsons.toJSONString(), Integer.class);
-        Integer userids = json.getInteger("userids");
-        if(ids.size()==0||userids==null){
+        if(ids.size()==0){
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }else{
             try {

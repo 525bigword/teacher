@@ -27,5 +27,5 @@ public interface CourseWareService {
     //查询CourseWare
     CourseWare findCourseWareByvodiAndCode(CourseWare courseWare)throws Exception;
     //删除一个CourseWare
-    void delCourseWareClassIfy(Integer coursewareid, Integer userid)throws Exception;
+    void delCourseWareClassIfy(Integer coursewareid)throws Exception;
 }

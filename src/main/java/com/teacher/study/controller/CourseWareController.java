@@ -158,7 +158,7 @@ public class CourseWareController {
         }else{
             try {
                 for (int i = 0; i < ids.size(); i++) {
-                    courseWareService.delCourseWareClassIfy(ids.get(i),userids);
+                    courseWareService.delCourseWareClassIfy(ids.get(i));
                 }
                 return new ResponseEntity(HttpStatus.OK);
             }catch (Exception e) {
@@ -171,12 +171,12 @@ public class CourseWareController {
     @PostMapping("/del")//@RequestParam("coursewareid") Integer coursewareid,@RequestParam("userid") Integer userid
     public Return del(@RequestBody JSONObject json){
         Integer coursewareid = json.getInteger("coursewareid");
-        Integer userid = json.getInteger("userid");
-        if(null==coursewareid||null==userid){
+
+        if(null==coursewareid){
             return new Return().no();
         }else{
             try {
-                courseWareService.delCourseWareClassIfy(coursewareid,userid);
+                courseWareService.delCourseWareClassIfy(coursewareid);
                 return new Return().yes("");
             } catch (Exception e) {
                 e.printStackTrace();

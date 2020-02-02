@@ -32,7 +32,11 @@ public interface CourseWareClassIfyMapper {
      */
     @Delete("delete from courseware_classify where id=#{id}")
     void delCourseWareClassIfy(CourseWareClassIfy courseWareClassIfy);
-
+    /**
+     * 根据Id删除CourseWareClassIfy
+     */
+    @Delete("delete from courseware_classify where courseware_id=#{courseware_id}")
+    void delCourseWareClassIfyByCourseWareId(@Param("courseware_id") Integer courseware_id);
 
     /**
      * 新增courseware_classify

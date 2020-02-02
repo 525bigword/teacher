@@ -59,21 +59,12 @@ public class CourseWareServiceImpl implements CourseWareService {
      */
     @Transactional
     @Override
-    public void delCourseWareClassIfy(Integer coursewareid,Integer userid) throws Exception {
-
-        ClassIfyModel courseWareToclassifyAndCourseWare = courseWareMapper.findCourseWareToclassifyAndCourseWare(coursewareid, userid);
+    public void delCourseWareClassIfy(Integer coursewareid) throws Exception {
         CourseWare courseWare=new CourseWare();
-        courseWare.setId(courseWareToclassifyAndCourseWare.getId());
+        courseWare.setId(coursewareid);
         CourseWare courseWareById = courseWareMapper.findCourseWareById(courseWare);
-        courseWareMapper.delCourseWare(courseWare);
-        //删除对应分类
-        CourseWareClassIfy courseWareClassIfy=new CourseWareClassIfy();
-        courseWareClassIfy.setId(courseWareToclassifyAndCourseWare.getValue());
-        Integer coursewareclassifyid =
-                courseWareClassIfyMapper.findCourseWareClassIfyIdByCourseWareIdAndClassIfyId(courseWareToclassifyAndCourseWare.getId(), courseWareToclassifyAndCourseWare.getValue());
-        CourseWareClassIfy courseWareClassIfy1=new CourseWareClassIfy();
-        courseWareClassIfy1.setId(coursewareclassifyid);
-        courseWareClassIfyMapper.delCourseWareClassIfy(courseWareClassIfy1);
+        courseWareClassIfyMapper.delCourseWareClassIfyByCourseWareId(courseWareById.getId());
+        courseWareMapper.delCourseWare(courseWareById);
         //删除文件
         String uri=Index.class.getResource("/").toString();
         String url=uri.substring(0, uri.indexOf("/",uri.indexOf("/")+1 ));

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -101,13 +104,12 @@ public class Index {
             os = response.getOutputStream();
             int size = fis.available(); // 得到文件大小
             System.out.println(size);
-            for (int i = 0; i < 50; i++) {
-                byte data[] = new byte[size/50];
+            for (int i = 0; i < 80; i++) {
+                byte data[] = new byte[size/80];
                 fis.read(data); // 读数据
                 os.write(data);
                 os.flush();
             }
-
             System.out.println(vidoSuffix);
             fis.close();
             fis = null;
@@ -127,8 +129,9 @@ public class Index {
         }
     }
     @GetMapping("/a")
-    public String a(){
-        System.out.println("aaa");
-        return Index.class.getResource("/").toString();
+    public String a(HttpServletResponse response){
+        String ip="https://outin-92b274ad458f11eab2a000163e1c7426.oss-cn-shanghai.aliyuncs" +
+                ".com/sv/4ebebc4d-17005ad513c/4ebebc4d-17005ad513c.mp4?Expires=1580650671&OSSAccessKeyId=LTAI3DkxtsbUyNYV&Signature=DOa0LOMVA6uRKsDwi38YhlaS5B8%3D";
+        return ip;
     }
 }

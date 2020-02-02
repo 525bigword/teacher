@@ -18,6 +18,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.util.unit.DataUnit;
 
 import java.util.Date;
@@ -108,8 +109,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void upUserById(User user ,List<Integer> classify_id) throws Exception {
         try{
-            if("".equals(user.getPwd())){
-                UserMapper.upUserById2(user);
+            if(StringUtils.isEmpty(user.getPwd())){
+                UserMapper.upUserById3(user);
             }else{
                 user.setPwd(Base.encode(user.getPwd()));
                 UserMapper.upUserById(user);
@@ -147,7 +148,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void upUserById(User user) throws Exception {
-        if("".equals(user.getPwd())){
+        if(StringUtils.isEmpty(user.getPwd())){
             UserMapper.upUserById2(user);
         }else{
             user.setPwd(Base.encode(user.getPwd()));

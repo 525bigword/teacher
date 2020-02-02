@@ -70,8 +70,11 @@ public interface UserMapper {
     @Update("update user set pwd=#{pwd},name=#{name},phone=#{phone},note=#{note} where id=#{id}")
     void upUserById(User user);
     /**修改账号信息*/
-    @Update("update user set name=#{name},phone=#{phone},note=#{note} where id=#{id}")
+    @Update("update user set name=#{name},phone=#{phone} where id=#{id}")
     void upUserById2(User user);
+    /**修改账号信息*/
+    @Update("update user set name=#{name},phone=#{phone},node=#{node} where id=#{id}")
+    void upUserById3(User user);
     /**修改账号部分*/
     @Update("update user set pwd=#{pwd},name=#{name},phone=#{phone} where id=#{id}")
     void upUserByIda(User user);

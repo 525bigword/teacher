@@ -15,6 +15,12 @@ import java.util.List;
 @Repository
 public interface CourseWareClassIfyMapper {
     /**
+     *
+     */
+
+
+
+    /**
      * 根据Id修改CourseWareClassIfy
      * @param courseWareClassIfy
      */

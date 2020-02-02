@@ -11,7 +11,7 @@ spring:
   datasource:
     username: dms
     password: Wzh000426-
-    url: jdbc:mysql://47.103.156.108:3306/study?characterEncoding=utf8
+    url: jdbc:mysql://123.56.42.31:3306/study?characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

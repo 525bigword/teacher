@@ -83,6 +83,17 @@ public interface CourseWareMapper {
             "like " +
             "CONCAT('%',#{name},'%') or `outline` like CONCAT('%',#{name},'%') or `explain` like CONCAT('%',#{name},'%') limit #{index}," +
             "#{pageNum}")
+    @Results({
+            @Result(id = true,column = "id",property = "id"),
+            @Result(column = "name",property = "name"),
+            @Result(column = "outline",property = "outline"),
+            @Result(column = "explain",property = "explain"),
+            @Result(column = "img",property = "img"),
+            @Result(column = "vido",property = "vido"),
+            @Result(column = "code",property = "code"),
+            @Result(column = "create_time",property = "createtime"),
+            @Result(column = "update_time",property = "updatetime")
+    })
     List<CourseWare> findCourseWareAlllike(@Param("index") Integer index,@Param("pageNum") Integer pageNum,
                                            @Param("name") String  name);
 

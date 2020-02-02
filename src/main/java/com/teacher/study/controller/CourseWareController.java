@@ -1,5 +1,6 @@
 package com.teacher.study.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -11,6 +12,8 @@ import com.teacher.study.service.PowerService;
 import com.teacher.study.util.*;
 import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -142,6 +145,26 @@ public class CourseWareController {
         } catch (Exception e) {
             e.printStackTrace();
             return new Return().no();
+        }
+    }
+
+    @PostMapping("/dellist")
+    public ResponseEntity<String> delList(@RequestBody JSONObject json){
+        JSONArray idjsons = json.getJSONArray("ids");
+        List<Integer> ids = JSONObject.parseArray(idjsons.toJSONString(), Integer.class);
+        Integer userids = json.getInteger("userids");
+        if(ids.size()==0||userids==null){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }else{
+            try {
+                for (int i = 0; i < ids.size(); i++) {
+                    courseWareService.delCourseWareClassIfy(ids.get(i),userids);
+                }
+                return new ResponseEntity(HttpStatus.OK);
+            }catch (Exception e) {
+                e.printStackTrace();
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+            }
         }
     }
 

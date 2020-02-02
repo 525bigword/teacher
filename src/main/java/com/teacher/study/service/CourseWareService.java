@@ -1,6 +1,7 @@
 package com.teacher.study.service;
 
 import com.teacher.study.enetity.*;
+import io.swagger.models.auth.In;
 import org.omg.CORBA.INTERNAL;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +22,6 @@ public interface CourseWareService {
     //查询所有CourseWare
     List<Power> findCourseWareAll(Integer id)throws Exception;
     Map findCourseWareAll(Integer index, Integer pageNum, String  name)throws Exception;
-
-
     //查询CourseWare
     CourseWare findCourseWareByIdAndCode(CourseWare courseWare)throws Exception;
     //查询CourseWare

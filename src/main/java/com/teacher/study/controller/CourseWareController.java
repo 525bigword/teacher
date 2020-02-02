@@ -149,20 +149,20 @@ public class CourseWareController {
     }
 
     @PostMapping("/dellist")
-    public ResponseEntity<String> delList(@RequestBody JSONObject json){
+    public Return delList(@RequestBody JSONObject json){
         JSONArray idjsons = json.getJSONArray("ids");
         List<Integer> ids = JSONObject.parseArray(idjsons.toJSONString(), Integer.class);
         if(ids.size()==0){
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new Return().no();
         }else{
             try {
                 for (int i = 0; i < ids.size(); i++) {
                     courseWareService.delCourseWareClassIfy(ids.get(i));
                 }
-                return new ResponseEntity(HttpStatus.OK);
+                return new Return().yes("");
             }catch (Exception e) {
                 e.printStackTrace();
-                return new ResponseEntity(HttpStatus.NOT_FOUND);
+                return new Return().no();
             }
         }
     }
